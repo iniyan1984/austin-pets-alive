@@ -43,6 +43,10 @@ WORKDIR /app
 ADD --chown=app:app Pipfile Pipfile.lock /app/
 
 RUN pipenv sync
+# RUN pipenv install transformers
+# need to remove it later
+# ADD --chown=app:app transformers_d.py /app/
+# RUN pipenv run python transformers_d.py 
 
 # Add the rest of the source code. This is done last so we don't invalidate all
 # layers when we change a line of code.

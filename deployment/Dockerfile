@@ -46,3 +46,4 @@ RUN set -ex; \
 
 # Entry point
 ENTRYPOINT ["/bin/bash","./docker-entrypoint.sh"]
+# ENTRYPOINT ["/bin/bash"]

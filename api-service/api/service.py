@@ -6,6 +6,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.get_data import get_dogs, get_similar_ids
 from api.get_data import get_similar_dogs
 from tempfile import TemporaryDirectory
+from transformers import pipeline
+
+qna = pipeline("question-answering")
 
 local_storage_path = "../persistent/data/"
 # load the dataset
@@ -66,5 +69,13 @@ async def predict(
 
 # this route will handle chatbot messages
 @app.get("/chat/{dog_id}/{question}")
-def respond(dog_id, question):
-    return {"data": f"You sent this '{question}' to DogID -> {dog_id}"}
+def respond(dog_id : int, question):
+    try:
+        if dog_id in df['AnimalInternal-ID'].values:
+            context = df[df['AnimalInternal-ID'] == dog_id]['MemoText'].values
+            answer = qna(question=question, context=context[0])
+            return {"data": answer['answer']}
+        else:
+            return {"error": "dog id does not exists!"}
+    except:
+        return {"data": "something went wrong!"}
