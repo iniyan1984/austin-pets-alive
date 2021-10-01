@@ -28,9 +28,6 @@ docker run --rm --name $IMAGE_NAME -ti \
 -e DEV=1  \
 -e GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS \
 -e GCP_PROJECT=$GCP_PROJECT \
--e GCP_ZONE=$GCP_ZONE \
+-e GCP_ZONE=$GCP_ZONE $IMAGE_NAME
 
 # --network mushroomappnetwork $IMAGE_NAME
-
-
-# docker run --rm --name homeless-pet-app-api-service -ti --mount type=bind,source="%cd%",target=/app --mount type=bind,source="%cd%/../persistent-folder/",target=/persistent -p 8000:8000 -e DEV=1  homeless-pet-app-api-service
