@@ -50,7 +50,7 @@ class DogInfo extends Component {
                         name: name
                     }
                     }}>
-                <button>Chat with {name}</button>
+                <button onClick={() => window.open("localhost:3000/chat")}>Chat with {name}</button>
                 </Link>
             </div>
         );

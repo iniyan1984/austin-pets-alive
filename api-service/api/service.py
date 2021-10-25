@@ -60,11 +60,9 @@ async def predict(
         # read the image
         image = cv2.imread(image_path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        print("Image", image.shape)
         similar_ids = get_similar_dogs(image)
         similar_df = df[df['AnimalInternal-ID'].isin(similar_ids)]
         similar_dogs = get_dogs(similar_df, 10)
-        print(similar_dogs[:4])
         return {'data': similar_dogs}
 
 # this route will handle chatbot messages
