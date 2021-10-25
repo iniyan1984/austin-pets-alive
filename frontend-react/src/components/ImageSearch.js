@@ -1,57 +1,7 @@
-// import React, { Component } from 'react';
-// import axios from 'axios';
-
-// class ImageSearch extends Component {
-//     state = {
-//         image: null,
-//         dogs: []
-//     };
-
-//     handleImageChange = (event) => {
-//         this.setState({
-//             image: event.target.files[0]
-//         })
-//     };
-
-//     handleSubmit = (event) => {
-//         event.preventDefault();
-//         let form_data = new FormData();
-//         form_data.append('file', this.state.image);
-//         let url = "https://localhost:8000/file";
-//         axios.post(url, form_data, {
-//             headers: {
-//                 'content-type': 'multipart/form-data'
-//             }
-//         })
-//         .then(res => {
-//             this.setState({ dogs: res.data });
-//             console.log(this.state.dogs)
-//         })
-//         .catch(err => console.log(err))
-//     };
-
-//     render() {
-//         return (
-//             <div className="App">
-//                 <form onSubmit={this.handleSubmit}>
-//                 <p>
-//                 <input type="file"
-//                     id="image"
-//                     accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
-//                 </p>
-//                 <input type="submit"/>
-//                 </form>
-//             </div>
-//         );
-//     }
-
-// }
-
-// export default ImageSearch;
-
 import React, { Component } from 'react';
 import axios from 'axios';
 import CardList from './CardList'
+import "./ImageSearch.css"
 
 class ImageSearch extends Component {
     constructor() {
@@ -88,13 +38,11 @@ class ImageSearch extends Component {
     })
         .then(res => {
           this.setState({ dogs: res.data.data});
-          console.log(this.state.dogs.data);
         })
         .catch(err => console.log(err))
   };
 
   render() {
-      console.log(this.state.dogs);
     return (
       <div className="App">
           <h2 className="f2">Image Search</h2>
@@ -107,11 +55,15 @@ class ImageSearch extends Component {
 
           </p> */}
           <p>
+          <div class="upload-btn-wrapper">
+            <button class="btn">Upload an image</button>
             <input type="file"
                    id="image"
                    accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
+
+          </div>
           </p>
-          <input type="submit"/>
+          <button type="submit" class="btn">Search</button>
         </form>
         {console.log("length", this.state.dogs.length)}
         <CardList dogs={this.state.dogs} />

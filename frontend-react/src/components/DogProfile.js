@@ -2,6 +2,8 @@ import React from 'react'
 import "./DogInfo.css"
 
 const DogProfile = (props) => {
+  console.log("Testing...")
+  console.log(props)
   const { id, name, sex, photo_url, weight, color, dob, breed, memo } = props.info;
   return (
     <div>

@@ -7,6 +7,8 @@ import CardList from './components/CardList'
 import DogInfo from './components/DogInfo'
 import ImageSearch from './components/ImageSearch'
 import ChatBot from './components/ChatBot'
+import { Link } from 'react-router-dom'
+
 
 // import { dogs } from './dogs'
 
@@ -47,8 +49,12 @@ class App extends Component {
         <Switch>
           <div className="tc ma5">
             <h1 className="f1">Homeless Pet Network</h1>
+
             <Route exact path="/">
               <SearchBox searchChange={this.onSearchChange} />
+              <Link to="/image-search">
+                <button class="image-search-btn">Image Search</button>
+              </Link>
               <CardList dogs={filterDogs} />
               <button onClick={this.onClick}>Load More</button>
             </Route>
