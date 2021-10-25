@@ -12,10 +12,9 @@ export PERSISTENT_DIR=$(pwd)/../persistent-folder/
 export SECRETS_DIR=$(pwd)/../secrets/
 export GCP_PROJECT="ai5-c1-group1"
 export GCP_ZONE="us-central1-a"
-export GOOGLE_APPLICATION_CREDENTIALS=/secrets/bucket-reader.json
 
 # Build the image based on the Dockerfile
-# docker build -t $IMAGE_NAME -f Dockerfile .
+docker build -t $IMAGE_NAME -f Dockerfile .
 
 # Run the container
 # --mount: Attach a filesystem mount to the container
